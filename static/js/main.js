@@ -105,6 +105,15 @@
     submitButton.textContent = "Отправляем заявку...";
     setStatus("Передаём заявку администратору...");
 
+    if (window.__FORBS_STATIC_DEMO || window.location.hostname.endsWith("github.io")) {
+      bookingForm.reset();
+      setStatus("Демо-версия: заявка собрана. Для живого подтверждения напишите в Telegram или позвоните.", "success");
+      initBookingDefaults();
+      submitButton.disabled = false;
+      submitButton.textContent = "Забронировать стол";
+      return;
+    }
+
     try {
       const response = await fetch("/api/booking", {
         method: "POST",
