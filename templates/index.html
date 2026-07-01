@@ -26,7 +26,7 @@
   <meta name="twitter:title" content="FORBS — бар на Рубинштейна">
   <meta name="twitter:description" content="Кухня, коктейли и поздние столы в центре Петербурга.">
   <meta name="twitter:image" content="{{ og_image_url }}">
-  <link rel="preload" href="{{ url_for('static', filename='assets/images/meta/hero-after-dark.webp') }}" as="image" fetchpriority="high">
+  <link rel="preload" href="{{ url_for('static', filename='assets/images/meta/hero-after-dark-clean.webp') }}" as="image" fetchpriority="high">
   <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
   <script type="application/ld+json">
   {
@@ -83,7 +83,7 @@
   <main id="top">
     <section class="hero section-dark" aria-labelledby="hero-title">
       <div class="hero-bg" aria-hidden="true">
-        <img src="{{ url_for('static', filename='assets/images/meta/hero-after-dark.webp') }}" alt="" fetchpriority="high">
+        <img src="{{ url_for('static', filename='assets/images/meta/hero-after-dark-clean.webp') }}" alt="" fetchpriority="high">
       </div>
       <div class="hero-noise" aria-hidden="true"></div>
       <div class="hero-content">
@@ -102,7 +102,7 @@
 
         <div class="hero-route reveal" aria-label="Маршрут FORBS">
           <figure class="route-frame route-frame-sign crop-top-wm">
-            <img src="{{ url_for('static', filename='assets/images/meta/forbs-exterior.webp') }}" alt="Вывеска FORBS ночью">
+            <img src="{{ url_for('static', filename='assets/images/meta/forbs-exterior-clean.webp') }}" alt="Вывеска FORBS ночью">
           </figure>
           <figure class="route-frame route-frame-stairs crop-top-wm">
             <img src="{{ url_for('static', filename='assets/images/night/017_202602181709551159.webp') }}" alt="Синяя лестница FORBS">
@@ -177,7 +177,7 @@
       <div class="section-head section-head-split">
         <div>
           <p class="section-kicker">Меню</p>
-          <h2 id="menu-title">Меню кухни, бара и коктейлей.</h2>
+          <h2 id="menu-title">Кухня, бар и винная карта.</h2>
         </div>
         <a class="btn btn-dark" href="{{ url_for('menu') }}">Смотреть меню</a>
       </div>
@@ -189,6 +189,10 @@
         <a class="menu-preview-card reveal" href="{{ url_for('menu') }}#bar-menu">
           <img src="{{ url_for('static', filename='assets/images/menu/menu-bar-2.webp') }}" alt="Страница барного меню FORBS" loading="lazy" decoding="async">
           <span>Бар и коктейли</span>
+        </a>
+        <a class="menu-preview-card reveal" href="{{ url_for('menu') }}#wine-menu">
+          <img src="{{ url_for('static', filename='assets/images/menu/menu-wine-2.webp') }}" alt="Страница винной карты FORBS" loading="lazy" decoding="async">
+          <span>Винная карта</span>
         </a>
       </div>
     </section>

@@ -120,6 +120,21 @@ MENU_PAGES = [
             },
         ],
     },
+    {
+        "id": "wine",
+        "label": "Вино",
+        "title": "Винная карта",
+        "pdf": "assets/menu/menu-wine.pdf",
+        "sections": [
+            {
+                "title": "Винная карта",
+                "pages": [
+                    ("assets/images/menu/menu-wine-1.webp", "Винная карта FORBS"),
+                    ("assets/images/menu/menu-wine-2.webp", "Вина по бокалам и бутылкам FORBS"),
+                ],
+            },
+        ],
+    },
 ]
 
 
@@ -335,7 +350,7 @@ def create_app() -> Flask:
             site_name=SITE_NAME,
             site_url=SITE_URL,
             og_image_url=external_path(url_for("static", filename="assets/images/meta/og-forbs.jpg")),
-            hero_image_url=external_path(url_for("static", filename="assets/images/meta/hero-after-dark.webp")),
+            hero_image_url=external_path(url_for("static", filename="assets/images/meta/hero-after-dark-clean.webp")),
             favicon_url=external_path(url_for("static", filename="favicon.svg")),
             manifest_url=external_path(url_for("static", filename="site.webmanifest")),
             phone_display=PHONE_DISPLAY,
