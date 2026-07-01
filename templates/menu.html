@@ -49,8 +49,8 @@
   <main class="menu-shell">
     <section class="menu-hero" aria-labelledby="menu-title">
       <p class="section-kicker">FORBS menu</p>
-      <h1 id="menu-title">Меню кухни, бара и коктейлей.</h1>
-      <p>Блюда, коктейли и напитки FORBS перед вечерней бронью. Посмотрите позиции, выберите настроение и приходите на Рубинштейна, 40.</p>
+      <h1 id="menu-title">Меню кухни и бара.</h1>
+      <p>Сканы актуального меню FORBS на Рубинштейна: кухня, безалкогольные напитки, коктейли и барная карта.</p>
       <div class="menu-hero-actions">
         <a class="btn btn-primary" href="#kitchen-menu">Кухня</a>
         <a class="btn btn-outline" href="#bar-menu">Бар</a>
@@ -75,24 +75,18 @@
             <a class="btn btn-dark" href="{{ url_for('static', filename=menu.pdf) }}" target="_blank" rel="noreferrer">Скачать PDF</a>
           </div>
 
-          <div class="menu-highlights" aria-label="Ключевые позиции {{ menu.label }}">
-            {% for group_title, items in menu.highlights %}
-              <section>
-                <h3>{{ group_title }}</h3>
-                <ul>
-                  {% for item in items %}
-                    <li>{{ item }}</li>
+          <div class="menu-scan-stack">
+            {% for section in menu.sections %}
+              <section class="menu-scan-section" aria-labelledby="{{ menu.id }}-{{ loop.index }}-title">
+                <h3 id="{{ menu.id }}-{{ loop.index }}-title">{{ section.title }}</h3>
+                <div class="menu-pages-grid{% if section.pages|length == 1 %} is-single{% endif %}">
+                  {% for page_src, page_alt in section.pages %}
+                    <a class="menu-page-card" href="{{ url_for('static', filename=page_src) }}" target="_blank" rel="noreferrer">
+                      <img src="{{ url_for('static', filename=page_src) }}" alt="{{ page_alt }}" loading="lazy" decoding="async">
+                    </a>
                   {% endfor %}
-                </ul>
+                </div>
               </section>
-            {% endfor %}
-          </div>
-
-          <div class="menu-pages-grid">
-            {% for page_src, page_alt in menu.pages %}
-              <a class="menu-page-card" href="{{ url_for('static', filename=page_src) }}" target="_blank" rel="noreferrer">
-                <img src="{{ url_for('static', filename=page_src) }}" alt="{{ page_alt }}" loading="lazy" decoding="async">
-              </a>
             {% endfor %}
           </div>
         </article>

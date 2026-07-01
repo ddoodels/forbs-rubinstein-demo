@@ -3,3 +3,8 @@ __pycache__/
 *.pyc
 .DS_Store
 .restart-app
+.vercel/
+.railway/
+.render/
+qa/
+exports/

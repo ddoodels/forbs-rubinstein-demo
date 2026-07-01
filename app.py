@@ -91,15 +91,13 @@ MENU_PAGES = [
         "label": "Кухня",
         "title": "Меню кухни",
         "pdf": "assets/menu/menu-kitchen.pdf",
-        "pages": [
-            ("assets/images/menu/menu-kitchen-1.webp", "Обложка меню кухни FORBS"),
-            ("assets/images/menu/menu-kitchen-2.webp", "Позиции меню кухни FORBS"),
-        ],
-        "highlights": [
-            ("Салаты", ["Цезарь с курицей 750", "Цезарь с креветкой 890", "Салат с лососем и брынзой 910"]),
-            ("Закуски", ["Мини-тако 780", "Тарталетки с тар-таром из лосося и авокадо 780", "Креветки в миндальной панировке 980"]),
-            ("Горячее", ["Говяжий бефстроганов 960", "Стейк стриплойн 2300", "Стейк из лосося с брокколи 1450"]),
-            ("Роллы", ["Филадельфия с лососем 990", "Калифорния с камчатским крабом и креветкой 980", "Темпура с угрем 910"]),
+        "sections": [
+            {
+                "title": "Меню кухни",
+                "pages": [
+                    ("assets/images/menu/menu-kitchen-2.webp", "Меню кухни FORBS"),
+                ],
+            },
         ],
     },
     {
@@ -107,15 +105,19 @@ MENU_PAGES = [
         "label": "Бар",
         "title": "Барное меню",
         "pdf": "assets/menu/menu-bar.pdf",
-        "pages": [
-            ("assets/images/menu/menu-bar-1.webp", "Безалкогольные напитки, лимонады, кофе и чай FORBS"),
-            ("assets/images/menu/menu-bar-2.webp", "Коктейли, крепкие напитки, настойки и пиво FORBS"),
-        ],
-        "highlights": [
-            ("Авторские коктейли", ["Sunset Sour 1000", "Cherry Eclipse 1100", "Rose Mirage 1000", "Velvet Boulevard 1200"]),
-            ("Классика", ["Long Island 1200", "Aperol Spritz 850", "French 75 850", "Negroni 1000"]),
-            ("Бар", ["Настойки в ассортименте 550", "Tropical set 2500", "Corona Extra 650"]),
-            ("Безалкогольное", ["Лимонады 600/1000", "Coca-Cola 400", "Red Bull 450", "Кофе 300-550"]),
+        "sections": [
+            {
+                "title": "Безалкогольное",
+                "pages": [
+                    ("assets/images/menu/menu-bar-1.webp", "Безалкогольное барное меню FORBS"),
+                ],
+            },
+            {
+                "title": "Алкогольное",
+                "pages": [
+                    ("assets/images/menu/menu-bar-2.webp", "Алкогольное барное меню FORBS"),
+                ],
+            },
         ],
     },
 ]
