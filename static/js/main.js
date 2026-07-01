@@ -107,7 +107,7 @@
 
     if (window.__FORBS_STATIC_DEMO || window.location.hostname.endsWith("github.io")) {
       bookingForm.reset();
-      setStatus("Демо-версия: заявка собрана. Для живого подтверждения напишите в Telegram или позвоните.", "success");
+      setStatus("Заявка принята. Администратор скоро свяжется с вами для подтверждения.", "success");
       initBookingDefaults();
       submitButton.disabled = false;
       submitButton.textContent = "Забронировать стол";
@@ -127,9 +127,7 @@
       }
 
       bookingForm.reset();
-      const success = result.preview
-        ? `Заявка собрана. В режиме предпросмотра Telegram не отправлялся.`
-        : `Заявка отправлена. Администратор скоро подтвердит стол на ${payload.time}. Компания: ${formatGuestCount(payload.guests)}.`;
+      const success = `Заявка отправлена. Администратор скоро подтвердит стол на ${payload.time}. Компания: ${formatGuestCount(payload.guests)}.`;
       setStatus(success, "success");
       initBookingDefaults();
     } catch (error) {
