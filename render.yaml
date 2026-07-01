@@ -1,0 +1,37 @@
+services:
+  - type: web
+    name: forbs-site
+    runtime: python
+    plan: starter
+    buildCommand: pip install -r requirements.txt
+    startCommand: gunicorn app:app --bind 0.0.0.0:$PORT
+    healthCheckPath: /healthz
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.12.4
+      - key: FORBS_PREVIEW_MODE
+        value: "0"
+      - key: FORBS_SITE_URL
+        value: https://forbsbar.ru
+      - key: FORBS_TELEGRAM_BOT_TOKEN
+        sync: false
+      - key: FORBS_TELEGRAM_CHAT_ID
+        sync: false
+      - key: FORBS_TELEGRAM_THREAD_ID
+        sync: false
+      - key: FORBS_LEGAL_NAME
+        sync: false
+      - key: FORBS_LEGAL_ADDRESS
+        sync: false
+      - key: FORBS_LEGAL_INN
+        sync: false
+      - key: FORBS_LEGAL_OGRN
+        sync: false
+      - key: FORBS_LEGAL_EMAIL
+        sync: false
+      - key: FORBS_PD_OPERATOR
+        sync: false
+      - key: FORBS_PD_OPERATOR_ADDRESS
+        sync: false
+      - key: FORBS_PD_OPERATOR_EMAIL
+        sync: false

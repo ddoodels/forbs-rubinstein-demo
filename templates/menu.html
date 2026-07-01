@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="format-detection" content="telephone=no">
+  <meta name="theme-color" content="#060505">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  <title>Меню FORBS — кухня, бар и коктейли на Рубинштейна</title>
+  <meta name="description" content="Меню FORBS на Рубинштейна: кухня, коктейли, барная карта, лимонады, кофе и чай. Блюда, напитки и цены перед бронированием.">
+  <link rel="canonical" href="{{ canonical_url }}">
+  <link rel="icon" href="{{ favicon_url }}" type="image/svg+xml">
+  <link rel="manifest" href="{{ manifest_url }}">
+  <meta property="og:title" content="Меню FORBS — кухня, бар и коктейли">
+  <meta property="og:description" content="Кухня, коктейли, барная карта и напитки FORBS на Рубинштейна.">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="ru_RU">
+  <meta property="og:site_name" content="FORBS">
+  <meta property="og:url" content="{{ canonical_url }}">
+  <meta property="og:image" content="{{ og_image_url }}">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Меню FORBS">
+  <meta name="twitter:description" content="Кухня, бар и коктейли FORBS на Рубинштейна.">
+  <meta name="twitter:image" content="{{ og_image_url }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body class="menu-page">
+  <a class="skip-link" href="#menu-pages">К меню</a>
+
+  <header class="site-header booking-header is-scrolled" data-header>
+    <a class="brand-link" href="{{ url_for('index') }}" aria-label="FORBS">
+      <span>FORBS</span>
+    </a>
+    <nav class="main-nav" aria-label="Основная навигация">
+      <a href="{{ url_for('index') }}#kitchen">Кухня</a>
+      <a href="{{ url_for('menu') }}">Меню</a>
+      <a href="{{ url_for('index') }}#night">Ночь</a>
+      <a href="{{ url_for('index') }}#offer">Акция</a>
+      <a href="{{ url_for('index') }}#contacts">Контакты</a>
+    </nav>
+    <div class="header-actions">
+      <a class="icon-link" href="tel:{{ phone_href }}" aria-label="Позвонить">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.8 3.7 9.4 3c.6-.1 1.2.2 1.4.8l1 2.5c.2.5 0 1.1-.4 1.4L10 8.9c.9 1.8 2.4 3.3 4.1 4.2l1.2-1.4c.4-.4 1-.6 1.5-.4l2.5 1c.6.2.9.8.8 1.4l-.7 2.6c-.2.8-.9 1.4-1.7 1.4C11.2 17.7 6 12.5 6 6c0-.8.5-1.5 1.3-1.7Z" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+      <a class="btn btn-small" href="{{ url_for('booking') }}">Забронировать</a>
+    </div>
+  </header>
+
+  <main class="menu-shell">
+    <section class="menu-hero" aria-labelledby="menu-title">
+      <p class="section-kicker">FORBS menu</p>
+      <h1 id="menu-title">Меню кухни, бара и коктейлей.</h1>
+      <p>Блюда, коктейли и напитки FORBS перед вечерней бронью. Посмотрите позиции, выберите настроение и приходите на Рубинштейна, 40.</p>
+      <div class="menu-hero-actions">
+        <a class="btn btn-primary" href="#kitchen-menu">Кухня</a>
+        <a class="btn btn-outline" href="#bar-menu">Бар</a>
+      </div>
+    </section>
+
+    <nav class="menu-tabs" aria-label="Разделы меню">
+      {% for menu in menu_pages %}
+        <a href="#{{ menu.id }}-menu">{{ menu.label }}</a>
+      {% endfor %}
+      <a href="{{ url_for('booking', from='menu') }}">Забронировать</a>
+    </nav>
+
+    <section class="menu-docs" id="menu-pages">
+      {% for menu in menu_pages %}
+        <article class="menu-doc" id="{{ menu.id }}-menu">
+          <div class="menu-doc-head">
+            <div>
+              <p class="section-kicker">{{ menu.label }}</p>
+              <h2>{{ menu.title }}</h2>
+            </div>
+            <a class="btn btn-dark" href="{{ url_for('static', filename=menu.pdf) }}" target="_blank" rel="noreferrer">Скачать PDF</a>
+          </div>
+
+          <div class="menu-highlights" aria-label="Ключевые позиции {{ menu.label }}">
+            {% for group_title, items in menu.highlights %}
+              <section>
+                <h3>{{ group_title }}</h3>
+                <ul>
+                  {% for item in items %}
+                    <li>{{ item }}</li>
+                  {% endfor %}
+                </ul>
+              </section>
+            {% endfor %}
+          </div>
+
+          <div class="menu-pages-grid">
+            {% for page_src, page_alt in menu.pages %}
+              <a class="menu-page-card" href="{{ url_for('static', filename=page_src) }}" target="_blank" rel="noreferrer">
+                <img src="{{ url_for('static', filename=page_src) }}" alt="{{ page_alt }}" loading="lazy" decoding="async">
+              </a>
+            {% endfor %}
+          </div>
+        </article>
+      {% endfor %}
+    </section>
+  </main>
+
+  <footer class="site-footer site-footer-dark">
+    <div class="site-footer-inner">
+      <span>FORBS • {{ address }} • {{ hours }}</span>
+      <nav aria-label="Правовая информация">
+        <a href="{{ url_for('legal') }}">Документы</a>
+      </nav>
+      <span>18+</span>
+    </div>
+  </footer>
+
+  <script src="{{ url_for('static', filename='js/main.js') }}" defer></script>
+</body>
+</html>
